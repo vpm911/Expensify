@@ -1,0 +1,41 @@
+boilerplate dependencies:
+0. yarn init
+1. yarn add live-server
+2. yarn add webpack webpack-cli
+3. yarn add babel-core babel-cli babel-loader
+4. yarn add babel-preset-env babel-preset-react
+5. yarn add normalize.css
+6. style-loader css-loader node-sass
+7. react react-dom
+
+create webpack.config.js
+	const path = require('path');
+	module.exports = {
+	  entry: './src/app.js',
+	  output: {
+		path: path.join(__dirname, 'public'),
+		filename: 'bundle.js'
+	  }
+	,
+	module:{
+	  rules:[{
+		loader: 'babel-loader',
+		test: /\.js$/,
+		exclude: /node_modules/
+	  }, {
+		test: /\.s?css$/,
+		use : [
+		  'style-loader',
+		  'css-loader','sass-loader']
+	  }
+	]
+	}
+	};
+
+
+create .babelrc file
+	{
+    "presets":[
+        "env","react"
+    ]
+	}
