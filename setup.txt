@@ -39,3 +39,28 @@ create .babelrc file
         "env","react"
     ]
 	}
+
+	GitHub setup:
+	install git bash
+	create ssh keys : 
+		in git bash : 
+			ssh-keygen -t rsa  -b 4096 -C "vpm911@gmail.com"
+				- this creates two keys private and public in User/Vishal/.ssh folder
+			eval "$(ssh-agent -s)" 
+				- to verify
+			ssh-add ~/.ssh/id_rsa
+			  - this adds the private key to local keys
+			clip < ~/.ssh/id_rsa.pub
+				- copies the public key file to clipboard
+		Now go to GitHub, settings -> SSH : add new key and paste the clipboard contents
+		in the fingerprint box, and add key.
+		- To Test whether its working:
+		 	ssh -T git@github.com 
+
+To add a remote repository 
+	git remote add origin {paste the ssh link to repository}
+
+To push for the first time: 
+	git push -u origin master 
+		-  origin is the target repository master is the branch name
+	
